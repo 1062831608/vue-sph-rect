@@ -46,13 +46,14 @@
 <!--      显示当要加入购物车的数量-->
       <input type="text"
              class="numInput"
-             v-model.number="shopCartNum"
+             v-model="shopCartNum"
+             @change="changeShopCartNum"
       >
 <!--      增加和减少购物车数量的按钮-->
-      <button>+</button>
-      <button>-</button>
+      <button @click="shopCartNum++">+</button>
+      <button @click="shopCartNum > 1 ? shopCartNum-- : shopCartNum = 1">-</button>
 <!--      添加购物车-->
-      <button class="addShopCar">添加购物车</button>
+      <button class="addShopCar" @click="addShopCar">添加购物车</button>
     </div>
   </div>
 </template>
@@ -64,8 +65,7 @@ export default {
   name: "SelectorParams",
   data() {
     return {
-      shopCartNum: 1,
-      attrsIndex: 0
+      shopCartNum: 1, // 购买产品的个数
     }
   },
   methods:{
@@ -76,6 +76,36 @@ export default {
         item.isChecked = '0'
       })
       a.isChecked = '1'
+    },
+    // 用户表单输入添加购物车商品的数量
+    changeShopCartNum(e) {
+      // 获取用户输入的值
+      let val = e.target.value*1 // 使其强制转换为数字，如果是字符串就会变成NAN
+      if (isNaN(val) || val < 1) {
+        this.shopCartNum = 1
+      }else {
+        this.shopCartNum = parseInt(val) // 限制为大于1的整数
+      }
+    },
+    // 派发action将商品id 和 商品添加数量给购物车
+    addShopCar() {
+      let result = this.$store.dispatch('detail/actionAddOrUpdateShopCar',{
+        skuId: this.$route.params.skuId,
+        skuNum: this.shopCartNum
+      })
+      // 判断promise的状态
+      result.then(()=>{ // 成功状态,进行路由的跳转
+        this.$router.replace({
+          name:'addcartsuccess',
+          query:{
+            shopcartnum: this.shopCartNum
+          }
+        })
+        // 通过本地会话存储的方式将商品的数据存储在浏览器上面
+        sessionStorage.setItem('addCartObj', JSON.stringify(this.skuInfo))
+      }).catch(()=>{  // 失败状态
+        alert('加入购物车失败')
+      })
     }
   },
   computed:{
@@ -177,7 +207,7 @@ export default {
     padding-left: 380px;
     // 想要添加到购物车的数据的选择框
     .numInput {
-      width: 35px;
+      width: 45px;
       height: 25px;
       padding-left: 12px;
     }

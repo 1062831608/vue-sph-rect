@@ -37,3 +37,11 @@ export const getListDetail = (params)=>{
         url:`item/${params}`
     })
 }
+
+// 商品添加至购物车
+export const addOrUpdateShopCar = (skuId,skuNum)=>{
+    return requests({
+        method:'post',
+        url:`cart/addToCart/${ skuId }/${ skuNum }`
+    })
+}

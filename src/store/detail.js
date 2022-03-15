@@ -1,4 +1,4 @@
-import {getListDetail} from "@/api";
+import {getListDetail, addOrUpdateShopCar} from "@/api";
 
 export const detail = {
     namespaced: true,
@@ -13,6 +13,17 @@ export const detail = {
                 alert('获取数据失败')
             }else {
                 commit('GETLISTDETAIL',res.data)
+            }
+        },
+        // 发送请求添加或者修改购物车数据
+        async actionAddOrUpdateShopCar({commit},{skuId,skuNum}) {
+            let res = await addOrUpdateShopCar(skuId,skuNum)
+            if (res.code === 200) {
+                // 成功获取到后台的数据 返回一个成功的promise
+                return Promise.resolve('OK')
+            }else {
+                // 没有获取到后台数据，返回一个失败的Promise
+                return Promise.reject(new Error('failed'))
             }
         }
     }

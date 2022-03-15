@@ -11,13 +11,15 @@
       <div
           class="mask"
           ref="mask"
+          style="{display: none}"
       ></div>
     </div>
     <div
         ref="bigImg"
         class="maxbox"
         :style="{
-             backgroundImage: `url(${imgObj.imgUrl})`
+             backgroundImage: `url(${imgObj.imgUrl})`,
+             display: 'none'
           }"
     ></div>
   </div>
