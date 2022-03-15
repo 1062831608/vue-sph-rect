@@ -1,0 +1,194 @@
+[
+  {
+    "id": "001",
+    "name": "家用电器",
+    "keywords": [
+      "节能补贴",
+      "4K电视",
+      "空气进化器",
+      "IH电饭煲",
+      "滚筒洗衣机",
+      "电热水器"
+    ],
+    "imgUrl": "/images/floor-1-1.png",
+    "navList": [
+      {
+        "url": "#",
+        "text": "热门"
+      },
+      {
+        "url": "#",
+        "text": "大家电"
+      },
+      {
+        "url": "#",
+        "text": "生活电器"
+      },
+      {
+        "url": "#",
+        "text": "厨房电器"
+      },
+      {
+        "url": "#",
+        "text": "应季电器"
+      },
+      {
+        "url": "#",
+        "text": "空气/净水"
+      },
+      {
+        "url": "#",
+        "text": "高端电器"
+      }
+    ],
+    "carouselList": [
+      {
+        "id": "0011",
+        "imgUrl": "/images/floor-1-b01.png"
+      },
+      {
+        "id": "0012",
+        "imgUrl": "/images/floor-1-b02.png"
+      },
+      {
+        "id": "0013",
+        "imgUrl": "/images/floor-1-b03.png"
+      }
+    ],
+    "recommendList": [
+      "/images/floor-1-2.png",
+      "/images/floor-1-3.png",
+      "/images/floor-1-5.png",
+      "/images/floor-1-6.png"
+    ],
+    "bigImg": "/images/floor-1-4.png"
+  },
+  {
+    "id": "002",
+    "name": "手机通讯",
+    "keywords": [
+      "百亿补贴",
+      "苹果手机",
+      "小米旗舰",
+      "华为新品",
+      "三星新智能",
+      "无线充电"
+    ],
+    "imgUrl": "/images/floor-1-1.png",
+    "navList": [
+      {
+        "url": "#",
+        "text": "热门"
+      },
+      {
+        "url": "#",
+        "text": "苹果手机"
+      },
+      {
+        "url": "#",
+        "text": "小米手机"
+      },
+      {
+        "url": "#",
+        "text": "黑鲨电竞手机"
+      },
+      {
+        "url": "#",
+        "text": "华为手机"
+      },
+      {
+        "url": "#",
+        "text": "oppo/vivo"
+      },
+      {
+        "url": "#",
+        "text": "努比亚"
+      }
+    ],
+    "carouselList": [
+      {
+        "id": "0011",
+        "imgUrl": "/images/floor-1-b01.png"
+      },
+      {
+        "id": "0012",
+        "imgUrl": "/images/floor-1-b02.png"
+      },
+      {
+        "id": "0013",
+        "imgUrl": "/images/floor-1-b03.png"
+      }
+    ],
+    "recommendList": [
+      "/images/floor-1-2.png",
+      "/images/floor-1-3.png",
+      "/images/floor-1-5.png",
+      "/images/floor-1-6.png"
+    ],
+    "bigImg": "/images/floor-1-4.png"
+  },
+  {
+    "id": "003",
+    "name": "电脑主机",
+    "keywords": [
+      "大折优惠",
+      "高级外设",
+      "电脑扬声器",
+      "酷睿冰尊散热",
+      "无限cpu",
+      "樱花键盘"
+    ],
+    "imgUrl": "/images/floor-1-1.png",
+    "navList": [
+      {
+        "url": "#",
+        "text": "热门"
+      },
+      {
+        "url": "#",
+        "text": "惠普"
+      },
+      {
+        "url": "#",
+        "text": "联想拯救者"
+      },
+      {
+        "url": "#",
+        "text": "惠普暗杀星"
+      },
+      {
+        "url": "#",
+        "text": "外星人"
+      },
+      {
+        "url": "#",
+        "text": "飞行堡垒"
+      },
+      {
+        "url": "#",
+        "text": "高端电脑旗舰"
+      }
+    ],
+    "carouselList": [
+      {
+        "id": "0011",
+        "imgUrl": "/images/floor-1-b01.png"
+      },
+      {
+        "id": "0012",
+        "imgUrl": "/images/floor-1-b02.png"
+      },
+      {
+        "id": "0013",
+        "imgUrl": "/images/floor-1-b03.png"
+      }
+    ],
+    "recommendList": [
+      "/images/floor-1-2.png",
+      "/images/floor-1-3.png",
+      "/images/floor-1-5.png",
+      "/images/floor-1-6.png"
+    ],
+    "bigImg": "/images/floor-1-4.png"
+  }
+]

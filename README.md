@@ -1,24 +1,19 @@
 # shop_sph
 
-## Project setup
-```
-npm install
-```
+####@
+``````````
+表示src跟目录
+``````````
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+###路由分析
 
-### Compiles and minifies for production
-```
-npm run build
-```
+####路由组件
+````
+Home首页路由组件、Search路由组件、Login登录路由、Register注册路由
 
-### Lints and fixes files
+````
+####非路由组件
 ```
-npm run lint
+Header【首页、搜索页展示】
+Footer【在首页、搜索页】，但是在登录和注册页面没有
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
