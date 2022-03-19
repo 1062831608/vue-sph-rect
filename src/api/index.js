@@ -6,7 +6,7 @@ import mockRequests from "./mockAjax"; // 引入封装好的mock请求
 //获取三级分类页
 export const getCategoryList = ()=>{
     return requests({
-        method:'get',
+        method:'GET',
         url:'/product/getBaseCategoryList'
     })
 }
@@ -24,7 +24,7 @@ export const mockGetFloorList = () =>{
 // 获取搜索的数据
 export const getSearchList = (params)=>{
     return requests({
-        method:'post',
+        method:'POST',
         url:'list',
         data: params
     })
@@ -41,7 +41,31 @@ export const getListDetail = (params)=>{
 // 商品添加至购物车
 export const addOrUpdateShopCar = (skuId,skuNum)=>{
     return requests({
-        method:'post',
+        method:'POST',
         url:`cart/addToCart/${ skuId }/${ skuNum }`
+    })
+}
+
+// 获取购物车商品列表
+export const getShopcarList = ()=>{
+    return requests({
+        method: 'GET',
+        url:'cart/cartList'
+    })
+}
+
+// 删除购物车某个商品
+export const deleteShopCarGood = (skuId)=>{
+    return requests({
+        method: 'DELETE',
+        url: `cart/deleteCart/${skuId}`
+    })
+}
+
+// 修改购物车中商品选中属性
+export const apiUpdateShopCarGood = ({skuID,isChecked})=>{
+    return requests({
+        method: 'GET',
+        url: `cart/checkCart/${skuID}/${isChecked}`
     })
 }

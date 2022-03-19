@@ -1,9 +1,11 @@
 import {getListDetail, addOrUpdateShopCar} from "@/api";
+import {getUUID} from "@/untils/get_uuid";
 
 export const detail = {
     namespaced: true,
     state:{
-        listDetailData:{}
+        listDetailData:{},
+        uuid_token: getUUID() // 游客uuid
     },
     actions:{
         // 发送请求获取并传送params里面的 val
