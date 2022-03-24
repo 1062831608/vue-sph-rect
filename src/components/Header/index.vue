@@ -6,10 +6,12 @@
         <div class="loginList">
           <p>尚品汇欢迎您！</p>
           <p>
-            <span>请</span>
+            <span v-if="!userInfo.nickName">请</span>
 <!--            路由跳转登录和注册-->
-            <router-link to="/login">登录</router-link>
-            <router-link class="register" to="/register">免费注册</router-link>
+            <router-link to="/login" v-if="!userInfo.nickName">登录</router-link>
+            <a href="javascript:" v-else>{{ userInfo.nickName }}</a>
+            <router-link class="register" to="/register" v-if="!userInfo.nickName">免费注册</router-link>
+            <a href="javascript:" v-if="userInfo.nickName" @click="unLogin">&nbsp; | &nbsp;退出登录</a>
           </p>
         </div>
         <div class="typeList">
@@ -56,6 +58,8 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
   name: "Header",
   data() {
@@ -84,7 +88,22 @@ export default {
     // bread组件清除关键字后通知header组件，将keyword置空
     clearKeyword() {
       this.keyword = ''
+    },
+    // 退出登录
+    async unLogin() {
+      // 派发actions通知服务器我退出登陆了
+      try{
+        await this.$store.dispatch('user/loginOut')
+        this.$router.replace('/')
+        this.$router.go(0)
+      }catch (e) {
+        console.log(e)
+      }
     }
+  },
+  computed: {
+    // 用户的登录信息
+    ...mapState('user',['userInfo'])
   },
   mounted() {
     // 触发清除关键字的自定义事件

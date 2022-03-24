@@ -15,11 +15,14 @@ import Carousel from '@/components/Carousel'
 import Details from '@/components/Details'
 // 导入分页器组件 ------ 全局组件
 import Pagination from '@/components/Pagination'
+// 导入登录注册页面底部-----全局组件
+import LoginAndRegisterFooter from '@/components/LoginAndRegisterFooter'
 // 注册全局组件
 Vue.component('TypeNav',TypeNav) // 三级分类
 Vue.component('Carousel',Carousel) // 轮播图
 Vue.component('Details',Details)   // 商品参数组件
 Vue.component('Pagination',Pagination) // 分页器组件
+Vue.component('LoginAndRegisterFooter',LoginAndRegisterFooter)// 登录注册底部组件
 
 Vue.config.productionTip = false
 
@@ -31,3 +34,6 @@ new Vue({
     Vue.prototype.$bus = this // 全局事件总线
   }
 }).$mount('#app')
+
+
+

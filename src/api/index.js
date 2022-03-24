@@ -69,3 +69,53 @@ export const apiUpdateShopCarGood = ({skuID,isChecked})=>{
         url: `cart/checkCart/${skuID}/${isChecked}`
     })
 }
+
+// 获取验证码
+export const apiGetCode =(phone)=>{
+    return requests({
+        method:'GET',
+        url:`/user/passport/sendCode/${phone}`
+    })
+}
+
+// 提交表单信息注册
+export const apiRegister = (userInfo)=>{
+    return requests({
+        method:'POST',
+        url:'user/passport/register',
+        data:{
+            phone:userInfo.phone,
+            password:userInfo.password,
+            code:userInfo.code
+        }
+    })
+}
+
+// 提交登录信息注册
+export const apiLogin = (loginInfo)=>{
+    return requests({
+        method:'POST',
+        url:'user/passport/login',
+        data:{
+            phone: loginInfo.phone,
+            password: loginInfo.password
+        }
+
+    })
+}
+
+// 退出登录
+export const apiLoginOut = ()=>{
+    return requests({
+        method:'GET',
+        url:'user/passport/logout'
+    })
+}
+
+// 获取用户登录信息
+export const apiGetUserInfo = ()=>{
+    return requests({
+        method:'GET',
+        url:'user/passport/auth/getUserInfo'
+    })
+}

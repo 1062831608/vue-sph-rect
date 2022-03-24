@@ -3,8 +3,9 @@ import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import Search from "@/pages/Search";
 import Detail from "@/pages/Detail";
-import AddCartSuccess from '@/pages/AddCartSuccess'
-import ShopCart from '@/pages/ShopCart'
+import AddCartSuccess from '@/pages/AddCartSuccess';
+import ShopCart from '@/pages/ShopCart';
+import RegisterSuccess from '@/pages/Register/RegisterSuccess'
 
 export default [
     {
@@ -18,12 +19,12 @@ export default [
     {
         name: 'login',
         path: '/login',
-        component: Login
+        component: Login,
     },
     {
         name: 'register',
         path: '/register',
-        component: Register
+        component: Register,
     },
     {
         name: 'search',
@@ -57,6 +58,11 @@ export default [
         meta: {
             footerIsShow: true
         }
+    },
+    {
+        name: 'registersuccess',
+        path:'/registersuccess',
+        component: RegisterSuccess
     },
     // 重定向到首页
     {
