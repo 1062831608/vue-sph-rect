@@ -1,25 +1,10 @@
-// 一级路由
-import Home from "@/pages/Home";
-import Login from "@/pages/Login";
-import Register from "@/pages/Register";
-import Search from "@/pages/Search";
-import Detail from "@/pages/Detail";
-import AddCartSuccess from '@/pages/AddCartSuccess';
-import ShopCart from '@/pages/ShopCart';
-import RegisterSuccess from '@/pages/Register/RegisterSuccess'
-import Trade from '@/pages/Trade'
-import Pay from '@/pages/Pay'
-import PaySuccess from '@/pages/PaySuccess'
-import Center from '@/pages/Center'
-// 二级路由
-import MyOrder from '@/pages/Center/MyOrder'
-import GroupOrder from '@/pages/Center/GroupOrder'
+// 使用了路由懒加载技术
 
 export default [
     {
         name: 'center',
         path: '/center',
-        component: Center,
+        component: ()=>import("@/pages/Center"),
         meta:{
             footerIsShow: true
         },
@@ -28,19 +13,19 @@ export default [
             {
                 name: 'myorder',
                 path: 'myorder',
-                component: MyOrder
+                component: ()=>import("@/pages/Center/MyOrder")
             },
             {
                 name: 'grouporder',
                 path: 'grouporder',
-                component: GroupOrder
+                component: ()=>import("@/pages/Center/GroupOrder")
             }
         ]
     },
     {
         name: 'paysuccess',
         path: '/paysuccess',
-        component: PaySuccess,
+        component: ()=>import("@/pages/PaySuccess"),
         meta:{
             footerIsShow: true
         },
@@ -56,7 +41,7 @@ export default [
     {
         name:'pay',
         path:'/pay',
-        component: Pay,
+        component: ()=>import("@/pages/Pay"),
         meta:{
             footerIsShow: true
         },
@@ -72,7 +57,7 @@ export default [
     {
         name: 'home',
         path: '/home',
-        component: Home,
+        component: ()=>import("@/pages/Home"),
         meta: {
             footerIsShow: true  //控制footer组件显示还是隐藏
         }
@@ -80,17 +65,17 @@ export default [
     {
         name: 'login',
         path: '/login',
-        component: Login,
+        component: ()=>import("@/pages/Login"),
     },
     {
         name: 'register',
         path: '/register',
-        component: Register,
+        component: ()=>import("@/pages/Register"),
     },
     {
         name: 'search',
         path: '/search/:keyword?',
-        component: Search,
+        component: ()=>import("@/pages/Search"),
         meta: {
             footerIsShow: true  //控制footer组件显示还是隐藏
         },
@@ -102,12 +87,12 @@ export default [
         meta: {
             footerIsShow: true
         },
-        component: Detail
+        component: ()=>import("@/pages/Detail")
     },
     {
         name:'addcartsuccess',
         path:'/addCartSuccess',
-        component: AddCartSuccess,
+        component: ()=>import("@/pages/AddCartSuccess"),
         meta: {
             footerIsShow: true
         }
@@ -115,7 +100,7 @@ export default [
     {
         name: 'shopcart',
         path: '/shopcart',
-        component: ShopCart,
+        component: ()=>import("@/pages/ShopCart"),
         meta: {
             footerIsShow: true
         }
@@ -123,12 +108,12 @@ export default [
     {
         name: 'registersuccess',
         path:'/registersuccess',
-        component: RegisterSuccess
+        component: ()=>import("@/pages/Register/RegisterSuccess")
     },
     {
         name: 'trade',
         path: '/trade',
-        component: Trade,
+        component: ()=>import("@/pages/Trade"),
         meta:{
             footerIsShow: true
         },
