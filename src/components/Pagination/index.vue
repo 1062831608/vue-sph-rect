@@ -107,10 +107,6 @@ export default {
   url('https://at.alicdn.com/t/font_2681264_24z83sd3wbl.ttf?t=1646821369191') format('truetype');
 }
 .page {
-  position: absolute;
-  left: 50%;
-  bottom: -66px;
-  transform: translateX(-50%);
   width: 903px;
   height: 66px;
   overflow: hidden;

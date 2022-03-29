@@ -15,8 +15,8 @@
           </p>
         </div>
         <div class="typeList">
-          <a href="###">我的订单</a>
-          <a href="###">我的购物车</a>
+          <router-link :to="{name: 'myorder'}">个人中心</router-link>
+          <router-link :to="{name: 'shopcart'}">我的购物车</router-link>
           <a href="###">我的尚品汇</a>
           <a href="###">尚品汇会员</a>
           <a href="###">企业采购</a>
@@ -67,6 +67,10 @@ export default {
       keyword:'', //搜素框关键字
     }
   },
+  computed:{
+    // 用户信息
+    ...mapState('user',['userInfo'])
+  },
   methods:{
     // 编程式路由导航跳转到搜索页面
     goSearch() {
@@ -100,10 +104,6 @@ export default {
         console.log(e)
       }
     }
-  },
-  computed: {
-    // 用户的登录信息
-    ...mapState('user',['userInfo'])
   },
   mounted() {
     // 触发清除关键字的自定义事件

@@ -21,6 +21,7 @@ export default {
       return this.$store.getters['detail/skuInfo'].skuImageList || []
     }
   }
+
 }
 </script>
 

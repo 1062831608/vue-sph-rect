@@ -52,24 +52,37 @@ router.beforeEach(async (to,from,next)=>{
         if (to.name === 'login') {
             next('/') // 如果已经登陆了，不可以去登录
         }else {
-            try {
-                // 重新发送获取用户信息请求
-                await store.dispatch('user/getUserInfo')
-                next()
-            }catch (e) {
-                // 如果token失效了，跳转回首页，清除本地的token
-                await store.dispatch('user/loginOut')
-                next('/')
-            }
+            // 如果用户信息已经有了，直接跳转
+           if(store.state.user.userInfo.nickName) {
+               next()
+           }else {
+               // 如果没有用户信息，重新派发actions获取
+               try {
+                   // 重新发送获取用户信息请求
+                   await store.dispatch('user/getUserInfo')
+                   next()
+               }catch (e) {
+                   // 如果token失效了，跳转回首页，清除本地的token
+                   await store.dispatch('user/loginOut')
+                   next('/')
+               }
+           }
         }
     } else {
-        // 如果没有登录不可以去购物车和添加购物车
-        if (to.path === '/shopcart' || to.name === 'addcartsuccess') {
-            console.log(to)
+        // 未登录不可以去的路径
+        let imPassablePath = ['shopcart','addcartsuccess','trade','myorder']
+        // 判断是否去未登录的路径
+        let flag = imPassablePath.some(item=>{
+            return to.name.indexOf(item) !== -1
+        })
+        // 如果是去数组里面的路径
+        if (flag) {
+            // 跳转到登录页并且携带query参数
             next('/login')
         }else {
             next()
         }
+
     }
 })
 

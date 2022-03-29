@@ -19,12 +19,6 @@ export default {
   },
   async mounted() {
     this.$store.dispatch('home/getcatelist') // 获取三级分类页的数据,只会执行一次
-    try {
-      await this.$store.dispatch('user/getUserInfo') // 获取用户信息
-    }catch (e) {
-      console.log(e)
-      this.$store.dispatch('user/loginOut') // token失效了调取退出登录api
-    }
   }
 }
 </script>

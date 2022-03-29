@@ -50,7 +50,7 @@
               <a
                   href="javascript:"
               >
-                <img :src="good.defaultImg" />
+                <img v-lazy="good.defaultImg"/>
               </a>
             </div>
             <div class="price">
@@ -74,13 +74,15 @@
       </ul>
     </div>
     <!--    分页器-->
-    <Pagination
-        :total="goodsData.total"
-        :pageNo="goodsData.pageNo"
-        :continues="5"
-        :emitName="'changePage'"
-        :pageSize="goodsData.pageSize"
-    ></Pagination>
+    <div class="paginationStyle">
+      <Pagination
+          :total="goodsData.total"
+          :pageNo="goodsData.pageNo"
+          :continues="5"
+          :emitName="'changePage'"
+          :pageSize="goodsData.pageSize"
+      ></Pagination>
+    </div>
   </div>
 </template>
 
@@ -146,6 +148,12 @@ export default {
 <style scoped lang="less">
 .details{
   position: relative;
+  .paginationStyle {
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   margin-bottom: 71px;
   .sui-navbar{
     overflow: visible;
@@ -206,7 +214,7 @@ export default {
               color: #666;
               img{
                 max-width: 100%;
-                height: auto;
+                height: 255px;
                 vertical-align: middle;
               }
             }

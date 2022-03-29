@@ -105,10 +105,10 @@ export default {
         if(this.isAllChecked) {
          try {
            await this.$store.dispatch('user/loginUserInfo', this.loginInfo)
-           // 跳转路由至首页
-           this.$router.replace('/')
            // 再刷新，调取App挂载中的函数
            this.$router.go(0)
+           // 跳转路由至首页
+           this.$router.replace('/')
          }catch (e) {
            alert((`${e}`).substring(6))
          }
@@ -128,8 +128,7 @@ export default {
       }
       return false
     }
-  },
-
+  }
 }
 </script>
 

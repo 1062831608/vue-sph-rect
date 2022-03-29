@@ -119,3 +119,44 @@ export const apiGetUserInfo = ()=>{
         url:'user/passport/auth/getUserInfo'
     })
 }
+
+// 获取订单交易页数据
+export const apiGetTradeData = ()=>{
+    return requests({
+        method: 'GET',
+        url:'order/auth/trade'
+    })
+}
+
+// 提交订单
+export const apiSubmitOrder = (tradeNo, data)=>{
+    return requests({
+        method: 'POST',
+        data,
+        url:`order/auth/submitOrder?tradeNo=${tradeNo}`
+    })
+}
+
+// 获取订单支付信息
+export const apiGetOrderInfo = (orderId)=>{
+    return requests({
+        method: 'GET',
+        url: `payment/weixin/createNative/${orderId}`
+    })
+}
+
+// 询问服务器订单是否支付成功
+export const apiOrderState = (orderId)=>{
+    return requests({
+        method: 'GET',
+        url: `payment/weixin/queryPayStatus/${orderId}`
+    })
+}
+
+// 获取我的订单列表 page: 当前页码, limit：一页展示多少条数据
+export const apiGetOrderList = (page,limit)=>{
+    return requests({
+        method: 'GET',
+        url: `order/auth/${page}/${limit}`
+    })
+}

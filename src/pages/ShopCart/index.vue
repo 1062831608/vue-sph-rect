@@ -13,7 +13,7 @@
       </div>
       <div class="cart-body">
         <!--        购物车商品列表-->
-        <ul v-for="cartInfo in shopObj.cartInfoList" :key="cartInfo.id" class="cart-list">
+        <ul v-for="cartInfo in cartInfoList" :key="cartInfo.id" class="cart-list">
           <!--          购物车商品是否被选择-->
           <li class="cart-list-con1">
             <input :checked="cartInfo.isChecked"
@@ -24,7 +24,7 @@
           </li>
           <!--          商品图片以及商品名称-->
           <li class="cart-list-con2">
-            <img :src="cartInfo.imgUrl">
+            <img :src="cartInfo.imgUrl" alt="商品图片">
             <div class="item-msg">{{ cartInfo.skuName }}</div>
           </li>
           <!--          商品类型-->
@@ -63,13 +63,13 @@
           </li>
           <!--          商品小计-->
           <li class="cart-list-con6">
-            <span class="sum">{{ cartInfo.skuNum * cartInfo.cartPrice }}</span>
+            <span class="sum">{{ cartInfo.skuNum * cartInfo.cartPrice }}.00</span>
           </li>
           <!--          删除购物车的商品-->
           <li class="cart-list-con7">
             <a class="sindelet" href="javascript:" @click="deleteGood(cartInfo.skuId)">删除</a>
             <br>
-            <a href="#none">移到收藏</a>
+            <a href="javascript:">移到收藏</a>
           </li>
         </ul>
       </div>
@@ -89,20 +89,20 @@
             href="javascript:"
             @click="deleteAllCheckedGoods"
         >删除选中的商品</a>
-        <a href="#none">移到我的关注</a>
-        <a href="#none">清除下柜商品</a>
+        <a href="javascript:">移到我的关注</a>
+        <a href="javascript:">清除下柜商品</a>
       </div>
       <div class="money-box">
         <div class="chosed">已选择
-          <span>0</span>件商品
+          <span>{{ checkedGoodsNum }}</span>件商品
         </div>
         <!--        商品的总价格-->
         <div class="sumprice">
           <em>总价（不含运费） ：</em>
-          <i class="summoney">{{ shopCartPriceSum }}</i>
+          <i class="summoney">{{ shopCartPriceSum }}.00</i>
         </div>
         <div class="sumbtn">
-          <a class="sum-btn" href="###" target="_blank">结算</a>
+          <router-link :to="{name: 'trade'}" class="sum-btn" >结算</router-link>
         </div>
       </div>
     </div>
@@ -208,12 +208,16 @@ export default {
   computed: {
     // 购物车列表数据
     ...mapGetters('shopcar', ['shopObj']),
+    // 购物车列表
+    cartInfoList(){
+      return this.shopObj.cartInfoList || []
+    },
     // 购物车商品的总价
     shopCartPriceSum() {
       // filter先过滤掉没有被选中的购物车商品
       let alreadyArr = []
-      if (this.shopObj.cartInfoList) {
-        alreadyArr = this.shopObj.cartInfoList.filter(item => {
+      if (this.cartInfoList) {
+        alreadyArr = this.cartInfoList.filter(item => {
           return item.isChecked === 1
         })
       } else {
@@ -228,10 +232,20 @@ export default {
     isAllChecked() {
       // 用 every 来进行判断,因为every返回的是一个布尔值
       let res = false
-      if (this.shopObj.cartInfoList) {
-        res = this.shopObj.cartInfoList.every(item => item.isChecked === 1)
+      if (this.cartInfoList.length) {
+        res = this.cartInfoList.every(item => item.isChecked === 1)
       }
       return res
+    },
+    // 选中商品的个数
+    checkedGoodsNum() {
+      let sum = 0
+      this.cartInfoList.filter(item=>{
+        if(item.isChecked === 1) {
+          sum = sum + item.skuNum
+        }
+      })
+      return sum
     }
   }
 }
@@ -421,7 +435,7 @@ export default {
       }
 
       .sumprice {
-        width: 200px;
+        width: 300px;
         line-height: 22px;
         float: left;
         padding: 0 10px;
@@ -444,7 +458,7 @@ export default {
           color: #fff;
           text-align: center;
           font-size: 18px;
-          font-family: "Microsoft YaHei";
+
           background: #e1251b;
           overflow: hidden;
         }
